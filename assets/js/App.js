@@ -3,14 +3,10 @@ worker.postMessage({ type: 'fetchData' });
 
 import fabricaMenu from "./paginas/nav/menu.js";
 import fabricaRodape from "./paginas/footer/rodape.js";
-import { fabricaHome } from "./paginas/home.js";
-import { fabricaSobre } from "./paginas/sobre.js";
-import { fabricaContato } from "./paginas/contato.js";
-import { fabricaProjetos } from "./paginas/projetos.js";
-import { metaHome } from "./paginas/headmeta/metahome.js";
-import { metaContato } from "./paginas/headmeta/metacontato.js";
-import { metaSobre } from "./paginas/headmeta/metasobre.js";
-import { metaProjeto } from "./paginas/headmeta/metaprojeto.js";
+import { fabricaHome, metaTagsHome } from "./paginas/home.js";
+import { fabricaSobre, metaTagsSobre } from "./paginas/sobre.js";
+import { fabricaContato, metaTagsContato } from "./paginas/contato.js";
+import { fabricaProjetos, metaTagsProjeto } from "./paginas/projetos.js";
 import { MonitorarPerformance } from "./MonitorarPerformance.js";
 import especial from "./funcoesEspeciais.js";
 
@@ -28,23 +24,23 @@ const scriptTag = document.querySelector("script[src='assets/js/App.js']");
 const PJCommands = {
   '#home': new PJCommand(
     () => document.body.insertBefore(tela.home, scriptTag),
-    metaHome
+    metaTagsHome
   ),
   '#portifolio': new PJCommand(
     () => document.body.insertBefore(tela.projetos, scriptTag),
-    metaProjeto
+    metaTagsProjeto
   ),
   '#curriculo': new PJCommand(
     () => document.body.insertBefore(tela.sobre, scriptTag),
-    metaSobre
+    metaTagsSobre
   ),
   '#contato': new PJCommand(
     () => document.body.insertBefore(tela.contato, scriptTag),
-    metaContato
+    metaTagsContato
   ),
   'default': new PJCommand(
     async () => document.body.insertBefore(tela.home, scriptTag),
-    metaHome
+    metaTagsHome
   )
 };
 function inicializarPagina() {
@@ -56,8 +52,6 @@ function inicializarPagina() {
 }
 function removeMain() {
   const main = document.querySelector("main");
-  const head = document.querySelector("head");
-  head.innerHTML = '<link rel="stylesheet" href="assets/css/styles.css">';
   if (main && main.parentNode) {
     main.parentNode.removeChild(main);
   }

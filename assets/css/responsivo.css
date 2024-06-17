@@ -1,0 +1,11 @@
+@media screen and (max-width: 724px){
+    .menu {
+    left: -225px;
+    }
+    .menu-svg {
+        top: 190px;
+    }
+    .menu-button {
+        top: 784px;
+    }
+  }

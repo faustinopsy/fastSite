@@ -19,7 +19,10 @@ export default function fabricaMenu() {
   const link2 = fabricar.criarBotao(a2);
   const link3 = fabricar.criarBotao(a3);
   const link4 = fabricar.criarBotao(a4);
-
+  link1.innerHTML = '&#128204; Home '
+  link2.innerHTML = '&#128187; Portfolio'
+  link3.innerHTML = '&#128209; Curriculo'
+  link4.innerHTML = '&#128240; Contato'
   novoLi1.appendChild(link1);
   novoLi2.appendChild(link2);
   novoLi3.appendChild(link3);
