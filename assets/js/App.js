@@ -1,3 +1,6 @@
+const worker = new Worker('./worker.js');
+worker.postMessage({ type: 'fetchData' });
+
 import fabricaMenu from "./paginas/nav/menu.js";
 import fabricaRodape from "./paginas/footer/rodape.js";
 import { fabricaHome } from "./paginas/home.js";
@@ -9,7 +12,7 @@ import { metaContato } from "./paginas/headmeta/metacontato.js";
 import { metaSobre } from "./paginas/headmeta/metasobre.js";
 import { metaProjeto } from "./paginas/headmeta/metaprojeto.js";
 import { MonitorarPerformance } from "./MonitorarPerformance.js";
-import  especial  from "./funcoesEspeciais.js";
+import especial from "./funcoesEspeciais.js";
 
 //const monitor = new MonitorarPerformance();
 
@@ -20,24 +23,40 @@ class PJCommand {
   }
 }
 
+let tela = {};
+
+function inicializarPagina() {
+  const scriptTag = document.querySelector("script[src='assets/js/App.js']");
+  if (tela.home) {
+    document.body.insertBefore(tela.home, scriptTag);
+    especial();
+  }
+}
+
 window.addEventListener('DOMContentLoaded', async function () {
-  let navbar = fabricaMenu();
-  let centerMenu = fabricaMenu('center');
-  let footer = fabricaRodape();
-  let tela = {};
-  
+  const navbar = fabricaMenu();
+  const centerMenu = fabricaMenu('center');
+  const footer = fabricaRodape();
+
+  worker.addEventListener('message', async (event) => {
+    const { type, data, error } = event.data;
+    if (type === 'dadosJson') {
+
+      if (data && data.cards) {
+        tela.home = await fabricaHome(data.cards);
+        console.log(tela.home);
+        inicializarPagina();
+      }
+    } else if (type === 'error') {
+      console.error('Erro ao buscar estruturas:', error);
+    }
+  });
 
   const scriptTag = document.querySelector("script[src='assets/js/App.js']");
-  //document.body.insertBefore(footer, scriptTag);
   document.body.insertBefore(navbar, scriptTag);
 
-  tela.home = await fabricaHome();
-  tela.sobre = await fabricaSobre();
-  tela.projetos = await fabricaProjetos();
-  tela.contato = await fabricaContato();
   
-  document.body.insertBefore(tela.home, scriptTag);
-  especial()
+
   const PJCommands = {
     '#home': new PJCommand(
       () => document.body.insertBefore(tela.home, scriptTag),
@@ -69,17 +88,11 @@ window.addEventListener('DOMContentLoaded', async function () {
   });
 
   function removeMain() {
-    let main = document.querySelector("main");
-    document.querySelector("head").innerHTML = '';
-    document.querySelector("head").innerHTML ='<link rel="stylesheet" href="assets/css/styles.css">';
+    const main = document.querySelector("main");
+    const head = document.querySelector("head");
+    head.innerHTML = '<link rel="stylesheet" href="assets/css/styles.css">';
     if (main && main.parentNode) {
       main.parentNode.removeChild(main);
     }
   }
-
-
 });
-
-
-
- 

@@ -1,0 +1,104 @@
+[  
+	{
+  "id": 1,    "titulo": "Lotofácil conferidor",    
+	"imagens": [     
+	"img/lotofacil.png"    
+	],
+    "descricao": "Um siste para conferir resultados da lotofácil, com a possibilidade de gerar jogos com fechamento",
+    "link": "https://lotofacil.ceuvago.com"
+  },
+  
+  {
+    "id": 3,
+    "titulo": "Gerador de Código",
+    "imagens": [
+        "img/phpcrud.png"
+    ],
+    "descricao": "Um gerador de código CRUD MVC em PHP, o gerador criar os script básicos para criar, ler editar e excluir dados do banco de dados.",
+    "link": "https://phpcrud.ceuvago.com/"
+  },
+  {
+    "id": 4,
+    "titulo": "Reconhecimento facial",
+    "imagens": [
+         "img/facial.png"
+    ],
+    "descricao": "Sistema de reconhecimento facial e reconhecimneto de emoções via vídeo ou imagem",
+    "link": "https://face.ceuvago.com/"
+  },
+  {
+    "id": 5,
+    "titulo": "Procura Desaparecidos",
+    "imagens": [
+  "img/desaparecidos.png"
+    ],
+    "descricao": "Projeto com reconhecimento facial para encontrar pessoas desaparecidas",
+    "link": "https://desaparecidos.ceuvago.com/"
+  },
+  {
+    "id": 6,
+    "titulo": "Criador de provas online",
+    "imagens": [
+         "img/provas.png"
+    ],
+    "descricao": "Criador de provas online, e quiz e pronto para um sistemas de provas",
+    "link": "https://apps.rodrigofaustino.com.br/provasnovas/login.php"
+  },
+  {
+    "id": 7,
+    "titulo": "Mapas interativos",
+    "imagens": [
+  "img/mapas.png"
+  ],
+    "descricao": "Mapas do crime, interativos e dinâmicos, com a possibilidade de salvar novos pontos.",
+    "link": "https://mapadocrime.ceuvago.com/"
+  },
+  {
+    "id": 8,
+    "titulo": "Jogo Online MultJogador",
+    "imagens": [
+  "img/jogopapel.png"
+  ],
+    "descricao": "Dois jogadores humanos podem jogar um contra o outro e se comunicar online.",
+    "link": "https://ppt.ceuvago.com/"
+  },
+  {
+    "id": 9,
+    "titulo": "Jogo Trade tipo forex",
+    "imagens": [
+  "img/jogotrade.png"
+  ],
+    "descricao": "O Jogador simula operaçõs de  compra ou venda no estilo forex e ganha pontos",
+    "link": "https://simulatrade.ceuvago.com/"
+  }
+  ,
+  {
+    "id": 10,
+    "titulo": "Jogo cartas multiplayer online",
+    "imagens": [
+  "img/jogocartas.png"
+  ],
+    "descricao": "O Jogador cria adquire quantas cartas quiser e escolhe 3 delas para participar de batalhas, ",
+    "link": "https://cell.ceuvago.com/"
+  }
+  ,
+  {
+    "id": 11,
+    "titulo": "Cuide do Dev - bichinho virtual",
+    "imagens": [
+  "img/dev.png"
+  ],
+    "descricao": "cuide de um bichinho virtual humano, onde seu objetivo é ser feliz, ",
+    "link": "https://devminer.ceuvago.com/"
+  }
+  ,
+  {
+    "id": 12,
+    "titulo": "CF - Controle Financeiro",
+    "imagens": [
+  "img/banco.jpg"
+  ],
+    "descricao": "Um controle financeiro offline, ele trabalha unicamente no navegador do usuário, ",
+    "link": "https://banco.ceuvago.com/"
+  }
+]

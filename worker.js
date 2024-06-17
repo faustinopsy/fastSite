@@ -1,47 +1,40 @@
 self.addEventListener('message', async (event) => {
-    const { type } = event.data;
-    const paginas = {}
-    
-    if (type === 'fetchData') {
-      try {
-        const [arquivoMenu,arquivoHome,arquivoSobre,arquivoContato,arquivoFormulario,] = await Promise.all([
-          fetch('/json/menu.json'),
-          fetch('/json/home.json'),
-          fetch('/json/sobre.json'),
-          fetch('/json/contato.json'),
-          fetch('/json/formulario.json')
-        ]);
-        const menu = await arquivoMenu.json();
-        const home = await arquivoHome.json();
-        const sobre = await arquivoSobre.json();
-        const contato = await arquivoContato.json();
-        const formulario = await arquivoFormulario.json();
-        contato.section2.conteudo = formulario
-        //   for(conteudo in menu){
-        //     if(menu[conteudo].hash){
-        //       const resultado = await fetch(`/json/${menu[conteudo].hash}.json`)
-        //       const jsonPai = await resultado.json()
-              
-        //       for(jsonInterno in jsonPai){
-                
-        //         if(jsonPai[jsonInterno].conteudo){
-        //          const resinterno = await fetch(jsonPai[jsonInterno].conteudo.json)
-        //          const res = await resinterno.json()
-        //          jsonPai[jsonInterno].conteudo = res
-        //         } 
-        //       }
-              
-             
-        //       Object.defineProperty(paginas,  `${menu[conteudo].hash}`, {value: jsonPai })
-        //     } 
-        //   }
-        // const home = paginas.home;
-        // const sobre = paginas.sobre;
-        // const contato = paginas.contato;
-        self.postMessage({ type: 'dadosJson', data: {menu, home, sobre, contato } });
-      } catch (error) {
-        self.postMessage({ type: 'error', error: error.message });
-      }
-    }
-  });
+  const { type } = event.data;
   
+  if (type === 'fetchData') {
+      try {
+          const urls = [
+              '/json/curriculo.json',
+              '/json/portifolio.json',
+              '/json/a2fa.json',
+              '/json/cpfcorreto.json',
+              '/json/criptografiaAssimetrica.json',
+              '/json/InteligenciaArtificial.json',
+              '/json/LogicaProgramacao.json',
+              '/json/LogsSistemas.json',
+              '/json/MachineLearningPHP.json',
+              '/json/OPHP.json',
+              '/json/SistemaLogin.json',
+              '/json/TreinandoModelo.json'
+          ];
+
+          const responses = await Promise.all(urls.map(url => fetch(url)));
+          const jsonData = await Promise.all(responses.map(response => response.json()));
+
+          const data = {
+              curriculo: jsonData[0],
+              portifolio: jsonData[1],
+              cards:[
+                jsonData[2],jsonData[3],jsonData[4],jsonData[5],
+                jsonData[6],jsonData[7],jsonData[8], jsonData[9],
+                jsonData[10],jsonData[11]
+              ]
+              
+          };
+
+          self.postMessage({ type: 'dadosJson', data });
+      } catch (error) {
+          self.postMessage({ type: 'error', error: error.message });
+      }
+  }
+});

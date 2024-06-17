@@ -1,7 +1,6 @@
 
 export default function Especial(){
     const cards = document.querySelectorAll('.card');
-
     cards.forEach(card => {
       const rect = card.getBoundingClientRect();
       const hour = new Date().getHours();

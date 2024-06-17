@@ -68,7 +68,7 @@ const dadosMenu = {
   a4: {
     tipo: "a",
     atributos: { href: "#contato" },
-    textContent: "Contact",
+    textContent: "Contato",
     eventos: {
       click: "navContato"
     }
