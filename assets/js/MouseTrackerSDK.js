@@ -1,0 +1,94 @@
+class MouseTrackerSDK {
+    constructor(options) {
+        this.options = options;
+        this.movimentoMouser = [];
+        this.init();
+    }
+
+    init() {
+        const touchArea = document.body;
+
+        touchArea.addEventListener('touchstart', this.rastrearMovimento.bind(this), { passive: false });
+        touchArea.addEventListener('touchmove', this.rastrearMovimento.bind(this), { passive: false });
+        touchArea.addEventListener('touchend', this.rastrearMovimento.bind(this));
+        touchArea.addEventListener('touchcancel', this.rastrearMovimento.bind(this));
+
+        document.addEventListener('mousemove', this.rastrearMovimento.bind(this));
+        
+    }
+
+    rastrearMovimento(event) {
+        let dadosMovimento = null;
+
+        if (event.type.startsWith('touch')) {
+            const touch = event.touches[0] || event.changedTouches[0];
+            dadosMovimento = {
+                x: touch.clientX,
+                y: touch.clientY,
+                timestamp: Date.now()
+            };
+        } else {
+            dadosMovimento = {
+                x: event.pageX,
+                y: event.pageY,
+                timestamp: Date.now()
+            };
+        }
+
+        console.log(dadosMovimento);
+
+        // if (this.options.elementSelector && !event.target.matches(this.options.elementSelector)) {
+        //     return;
+        // }
+
+        this.movimentoMouser.push(dadosMovimento);
+        if (this.movimentoMouser.length >= 15 && this.options.endpoint) {
+            this.enviarSevidor();
+        }
+
+        if (this.movimentoMouser.length > this.options.bufferSize) {
+            this.movimentoMouser.shift();
+        }
+    }
+
+    enviarSevidor() {
+        if (this.movimentoMouser.length === 0) {
+            return;
+        }
+
+        const dataToSend = {
+            movements: this.movimentoMouser,
+            siteKey: this.options.siteKey
+        };
+
+        fetch(this.options.endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.options.apiToken}`
+            },
+            body: JSON.stringify(dataToSend)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Sem rede');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Dados enviados:', data);
+            this.movimentoMouser = [];
+        })
+        .catch(error => {
+            console.error('Erro ao enviar dados:', error);
+        });
+    }
+}
+
+const options = {
+    endpoint: '',
+    apiToken: '',
+    bufferSize: 100,
+    siteKey: 'your-site-key'
+};
+const mouser = new MouseTrackerSDK(options);

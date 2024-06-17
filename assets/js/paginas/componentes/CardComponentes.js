@@ -3,6 +3,7 @@ const dadosCard = {
       tipo: "div",
       class: "card",
       style: {
+        display: 'flex',
         border: "1px solid #ccc",
         borderRadius: "8px",
         boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
@@ -11,7 +12,10 @@ const dadosCard = {
         boxSizing: "border-box",
         'border-radius': '0px 20px 0 20px',
         'box-shadow': '0 4px 8px rgba(0, 0, 0, 0.5)',
-        'backdrop-filter': 'blur(30px)'
+        'backdrop-filter': 'blur(30px)',
+        'flex-direction': 'column',
+        'justify-content': 'center',
+        'align-items': 'center',
       },
       children: [
         {

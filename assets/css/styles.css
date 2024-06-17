@@ -94,7 +94,6 @@ body {
     width: 200px;
     height: 100%;
     z-index: 1;
-    backdrop-filter: blur(5px);
   }
   .menu-button {
     position: absolute;
@@ -128,6 +127,10 @@ body {
     
   }
   .card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -177,4 +180,8 @@ body {
     box-sizing: border-box;
     border-radius: 4px;
     margin-bottom: 10px;
+  }
+  .card:hover{
+    background-color: #f7b500af;
+    box-shadow: 0 9px 12px rgba(0, 0, 0, 0.7);;
   }

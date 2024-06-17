@@ -5,7 +5,7 @@ export default function Especial(){
     cards.forEach(card => {
       const rect = card.getBoundingClientRect();
       const hour = new Date().getHours();
-      if (rect.top > 300) {
+      if (rect.top > 650) {
         card.classList.add('dark-bg');
         card.classList.remove('light-bg');
       } else {
