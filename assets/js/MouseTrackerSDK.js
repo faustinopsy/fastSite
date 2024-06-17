@@ -16,7 +16,9 @@ class MouseTrackerSDK {
         document.addEventListener('mousemove', this.rastrearMovimento.bind(this));
         
     }
-
+    isMobile() {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1) || window.innerWidth <= 600;
+    }
     rastrearMovimento(event) {
         let dadosMovimento = null;
 
@@ -25,13 +27,15 @@ class MouseTrackerSDK {
             dadosMovimento = {
                 x: touch.clientX,
                 y: touch.clientY,
-                timestamp: Date.now()
+                timestamp: Date.now(),
+                mobile: isMobile()
             };
         } else {
             dadosMovimento = {
                 x: event.pageX,
                 y: event.pageY,
-                timestamp: Date.now()
+                timestamp: Date.now(),
+                mobile: isMobile()
             };
         }
 
