@@ -1,0 +1,169 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #000;
+  background-image: url("./img/montanha-dia.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow-X: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    backdrop-filter: brightness(0.2);
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .content h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #f7b500;
+  }
+
+  .content p {
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: -225px;
+    width: 200px;
+    height: 100%;
+    background-color: rgba(177, 159, 17, 0.66);
+    backdrop-filter: blur(5px);
+    box-shadow: 2px 0 9px 4px rgb(0 0 0 / 35%);
+    z-index: 1000;
+    padding: 20px;
+    transition: left 0.5s linear(0 0%, 0 2.27%, 0.02 4.53%, 0.04 6.8%, 0.06 9.07%, 0.1 11.33%, 0.14 13.6%, 0.25 18.15%, 0.39 22.7%, 0.56 27.25%, 0.77 31.8%, 1 36.35%, 0.89 40.9%, 0.85 43.18%, 0.81 45.45%, 0.79 47.72%, 0.77 50%, 0.75 52.27%, 0.75 54.55%, 0.75 56.82%, 0.77 59.1%, 0.79 61.38%, 0.81 63.65%, 0.85 65.93%, 0.89 68.2%, 1 72.7%, 0.97 74.98%, 0.95 77.25%, 0.94 79.53%, 0.94 81.8%, 0.94 84.08%, 0.95 86.35%, 0.97 88.63%, 1 90.9%, 0.99 93.18%, 0.98 95.45%, 0.99 97.73%, 1 100%);
+  }
+  .side-line {
+    position: absolute;
+    width: 15px;
+    height: 100%;
+    background-color: #f7b500;
+    left: 226px;
+    top: -10px;
+    border-radius: 0 10px 10px 0;
+    z-index: 50;
+  }
+  .menu.active {
+    left: 0;
+    background-color: rgba(177, 159, 17, 0.66);
+    backdrop-filter: blur(5px);
+  }
+
+  .menu ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .menu ul li {
+    margin: 20px 0;
+  }
+
+  .menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  .menu-svg {
+    position: absolute;
+    top: 135px;
+    right: -66px;
+    width: 200px;
+    height: 100%;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+  }
+  .menu-button {
+    position: absolute;
+    top: 79%;
+    right: -25px;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 50px;
+    background-color:#f7b500;
+    border: none;
+    border-radius: 5px 40px 40px 5px;
+    cursor: pointer;
+    outline: none;
+    z-index: 1001;
+    transition: right 0.3s ease;
+    font-size: 1.2em;
+  }
+  .menu-button::after{
+    content: '☰';
+  }
+  .menu.active .menu-button {
+    right: -25px;
+  }
+  .menu.active .menu-button::after{
+    content: 'X';
+  }
+  @media screen and (max-width: 724px){
+    .menu {
+    left: -225px;
+    }
+    
+  }
+
+  .card.dark-bg {
+    background-color: #f7f7f729;
+    color: white;
+  }
+  
+  .card.light-bg {
+    background-color: #f7f7f729;
+    color: black;
+  }
+  
+  .card-header, .card-footer {
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  .card-header {
+    font-size: 18px;
+  }
+  
+  .card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .card-section {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }

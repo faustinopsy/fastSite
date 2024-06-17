@@ -3,6 +3,15 @@ import Elemento from "./FastFrame.js";
 export function criarContainer(elemento) {
   return new Elemento(elemento).gerarElemento();
 }
+export function criarSvg() {
+  const div = criarContainer({tipo:'div'})
+  div.innerHTML = `
+  <svg class="menu-svg" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 100 150 q 40 -70 0 -130" fill="#f7b500" stroke-width="0"></path>
+  </svg>`;
+
+return div
+}
 
 export function criarCard(elemento) {
   return new Elemento(elemento).gerarElemento();

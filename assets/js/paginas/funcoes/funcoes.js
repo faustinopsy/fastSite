@@ -1,47 +1,33 @@
 const funcoes = {
     navHome: function(){
         location.hash = '#home'
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
     },
     navSobre: function(){
-        location.hash = '#sobre'
+        location.hash = '#curriculo'
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
     },
     navContato: function(){
         location.hash = '#contato'
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
     },
-    btnForm: function(e) {
-        e.preventDefault()
-            const nome = document.querySelector('#inputnome').value
-            const email = document.querySelector('#inputemail').value
-            console.log(`Nome: ${nome} - E-mail: ${email}` )
-        alert('dados no console')
+    navProjetos: function(){
+        location.hash = '#portifolio'
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
     },
-    fnCEP: async function(e){
-        e.preventDefault()
-        const cep = document.querySelector('#inputcep').value
-        const form  = document.querySelector('#formcep')
-        if(cep==='' || !Number(cep)) {
-          alert("preencha o campo com números")
-          document.querySelector('#inputcep').value=''
-          return
+    toggleMenu: function(){
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+      },
+    closeMenu: function(){
+    const menu = document.getElementById('menu');
+        if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
         }
-
-        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        const json = await response.json();
-        const divx = document.createElement('div')
-        divx.innerHTML = ` 
-        cep: ${json.cep}, <br>
-        logradouro: ${json.logradouro},<br>
-        complemento: ${json.complemento}, <br>
-        bairro: ${json.bairro}, <br>
-        localidade: ${json.localidade}, <br>
-        uf: ${json.uf}, <br>
-        ibge: ${json.ibge}, <br>
-        gia: ${json.gia}, <br>
-        ddd: ${json.ddd}, <br>
-        siafi: ${json.siafi}<br> 
-        ` 
-        form.appendChild(divx)
-        
-      }
+    }
 }
 export default funcoes;

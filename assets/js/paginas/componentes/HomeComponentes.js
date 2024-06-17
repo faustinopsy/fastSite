@@ -3,15 +3,28 @@ const dadosPagina = {
       border: "2px solid black",
       "box-sizing": "border-box"
     },
+    header: {
+      tipo: "header",
+      style: {
+        "box-sizing": "border-box",
+        textAlign: "center",
+        padding: "20px",
+        background: "lightblue",
+        fontSize: "24px"
+      },
+      textContent: "Bem-vindo à Página Inicial"
+    },
     main: {
       tipo: "main",
       style: {
-        border: "2px solid black",
-        "box-sizing": "border-box",
-        display: "flex",
-        "flex-direction": "column",
-        background: "black",
-        height: "auto"
+        'box-sizing': 'border-box',
+        'display': 'flex',
+        'height': 'auto',
+        'flex-direction': 'row',
+        'flex-wrap': 'wrap',
+        'justify-content': 'center',
+        'gap': '5px',
+        'margin': '10px'
       }
     },
     article: {
@@ -23,7 +36,8 @@ const dadosPagina = {
         display: "flex",
         "flex-wrap": "wrap",
         width: "100%",
-        height: "100%"
+        height: "100%",
+        "justify-content": "center"
       }
     },
     section1: {
@@ -69,4 +83,6 @@ const dadosPagina = {
       }
     }
   };
+  
   export default dadosPagina;
+  

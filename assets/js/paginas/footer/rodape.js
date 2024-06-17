@@ -1,24 +1,23 @@
 import * as fabricar from "../../core/Fabrica.js";
-const estiloPadrao = {
-    //border: '2px solid black',
-    'box-sizing': 'border-box', 
-};
 
 const footer = {
-    tipo: 'footer',
-    style: {
-        ...estiloPadrao,
-        background: 'lightgray',
-        position: 'fixed',
-        bottom: '0',
-        width: '80%',
-        clear: 'both',
-        height: '60px',
-    }
+  tipo: 'footer',
+  textContent: '© 2024 Minha Aplicação',
+  style: {
+    'box-sizing': 'border-box',
+    background: '#f7b500',
+    position: 'fixed',
+    bottom: '0',
+    width: '100%',
+    height: 'auto',
+    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 };
 
-export default function fabricaRodape(){
-    const novofooter = fabricar.criarContainer(footer);
-    return novofooter
-    
-  }
+export default function fabricaRodape() {
+  const novofooter = fabricar.criarContainer(footer);
+  return novofooter;
+}

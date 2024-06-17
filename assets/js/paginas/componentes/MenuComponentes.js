@@ -1,117 +1,78 @@
-const dadosNavegacao = {
-  header: {
-    tipo: "header",
-    style: {
-      "box-sizing": "border-box",
-      background: "lightblue",
-      textAlign: "center",
-      height: "auto"
-    }
+const dadosMenu = {
+  menu: {
+    tipo: "div",
+    id: "menu",
+    class: "menu"
   },
-  nav: {
-    tipo: "nav",
-    autocapitalize: "a",
-    id: "nav",
-    style: {
-      "box-sizing": "border-box",
-      display: "flex",
-      "flex-wrap": "wrap",
-      alignItems: "center",
-      height: "50px"
-    }
+  sideLine: {
+    tipo: "div",
+    class: "side-line"
+  },
+  svg: {
+    tipo: "svg",
+    class: "menu-svg",
+    viewBox: "0 0 150 100",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [
+      {
+        tipo: "path",
+          d: "M 100 150 q 40 -70 0 -130",
+          fill: "#b19f11a8",
+          strokeWidth: "0"
+      }
+    ]
+  },
+  menuButton: {
+    tipo: "button",
+    class: "menu-button",
+    eventos: {
+      click: "toggleMenu"
+    },
+    children: [
+      {
+        tipo: "span",
+        class: "menu-button-icon"
+      }
+    ]
   },
   ul: {
-    tipo: "ul",
-    style: {
-      "box-sizing": "border-box",
-      "list-style": "none",
-      margin: "0",
-      flex: "1"
-    }
+    tipo: "ul"
   },
   li: {
-    tipo: "li",
-    style: {
-      "box-sizing": "border-box",
-      flex: "1"
-    }
-  },
-  logo: {
-    tipo: "img",
-    src: "./img/icone.png",
-    style: {
-      "box-sizing": "border-box",
-      cursor: "pointer",
-      "text-decoration": "none",
-      position: "relative",
-      right: "40px",
-      width: "40px"
-    },
-    textContent: "Home",
-    hover: {
-      colorin: "#33DCFF",
-      colorout: ""
-    },
-    eventos: {
-      click: "navHome"
-    }
+    tipo: "li"
   },
   a1: {
     tipo: "a",
-    hash: "home",
-    accessKey: "h",
-    style: {
-      "box-sizing": "border-box",
-      cursor: "pointer",
-      "text-decoration": "none",
-      padding: "15px"
-    },
-    textContent: "Home",
-    hover: {
-      colorin: "#33DCFF",
-      colorout: ""
-    },
+    atributos: { href: "#home" },
+    textContent: "Inicio",
     eventos: {
       click: "navHome"
     }
   },
   a2: {
     tipo: "a",
-    hash: "sobre",
-    accessKey: "s",
-    style: {
-      "box-sizing": "border-box",
-      cursor: "pointer",
-      "text-decoration": "none",
-      padding: "15px"
-    },
-    textContent: "Sobre",
-    hover: {
-      colorin: "#33DCFF",
-      colorout: ""
-    },
+    atributos: { href: "#portifolio" },
+    textContent: "Portifolio",
     eventos: {
-      click: "navSobre"
+      click: "navProjetos"
     }
   },
   a3: {
     tipo: "a",
-    hash: "contato",
-    accessKey: "c",
-    style: {
-      "box-sizing": "border-box",
-      cursor: "pointer",
-      "text-decoration": "none",
-      padding: "15px"
-    },
-    textContent: "Contato",
-    hover: {
-      colorin: "#33DCFF",
-      colorout: ""
-    },
+    atributos: { href: "#curriculo" },
+    textContent: "Curriculo",
+    eventos: {
+      click: "navSobre"
+    }
+  },
+  a4: {
+    tipo: "a",
+    atributos: { href: "#contato" },
+    textContent: "Contact",
     eventos: {
       click: "navContato"
     }
   }
 };
-export default dadosNavegacao;
+
+export default dadosMenu;
