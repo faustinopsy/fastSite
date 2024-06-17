@@ -1,24 +1,29 @@
-
-export default function Especial(){
+export default function Especial() {
     const cards = document.querySelectorAll('.card');
     const menu = document.querySelector('.menu');
+    const hora = new Date().getHours();
+
+    const isDay = hora >= 6 && hora < 18;
+
     cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const hour = new Date().getHours();
-      if (rect.top > 650) {
-        card.classList.add('dark-bg');
-        card.classList.remove('light-bg');
-      } else {
-        card.classList.add('light-bg');
-        card.classList.remove('dark-bg');
-      }
-      if (hour >= 6 && hour < 18) { 
-          menu.style.backgroundColor = '#b19f11a8'
-          document.body.style.backgroundImage = 'url("./assets/css/img/montanha-dia.webp")';
-      } else { 
-          card.classList.add('dark-bg');
-          card.classList.remove('light-bg');
-          document.body.style.backgroundImage = 'url("./assets/css/img/montanha-noite.webp")';
-      }
+        const rect = card.getBoundingClientRect();
+        if (rect.top > window.innerHeight) {
+            card.classList.add('dark-bg');
+            card.classList.remove('light-bg');
+        } else {
+            card.classList.add('light-bg');
+            card.classList.remove('dark-bg');
+        }
     });
+
+    if (isDay) {
+        menu.style.backgroundColor = '#b19f11a8';
+        document.body.style.backgroundImage = 'url("./assets/css/img/montanha-dia.webp")';
+    } else {
+        document.body.style.backgroundImage = 'url("./assets/css/img/montanha-noite.webp")';
+        cards.forEach(card => {
+            card.classList.add('dark-bg');
+            card.classList.remove('light-bg');
+        });
+    }
 }

@@ -6,6 +6,13 @@ class MouseTrackerSDK {
     }
 
     init() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                this.enviarSevidor();
+            }
+        });
+        window.addEventListener('beforeunload', this.enviarSevidor());
+
         const touchArea = document.body;
 
         touchArea.addEventListener('touchstart', this.rastrearMovimento.bind(this), { passive: false });
@@ -28,14 +35,16 @@ class MouseTrackerSDK {
                 x: touch.clientX,
                 y: touch.clientY,
                 timestamp: Date.now(),
-                mobile: isMobile()
+                mobile: this.isMobile(),
+                url: location.href
             };
         } else {
             dadosMovimento = {
                 x: event.pageX,
                 y: event.pageY,
                 timestamp: Date.now(),
-                mobile: isMobile()
+                mobile: this.isMobile(),
+                url: location.href
             };
         }
 
@@ -56,6 +65,7 @@ class MouseTrackerSDK {
     }
 
     enviarSevidor() {
+        console.log(this.movimentoMouser.length)
         if (this.movimentoMouser.length === 0) {
             return;
         }
@@ -96,3 +106,5 @@ const options = {
     siteKey: 'your-site-key'
 };
 const mouser = new MouseTrackerSDK(options);
+
+
