@@ -2,10 +2,15 @@ class MouseTrackerSDK {
     constructor(options) {
         this.options = options;
         this.movimentoMouser = [];
+        this.rede = null;
+        this.downlink  = null
         this.init();
     }
 
     init() {
+        if(navigator.connection){
+            navigator.connection.addEventListener('change', this.statusRede());
+        }
         document.addEventListener('visibilitychange', () => {
             if (document.visibilityState === 'hidden') {
                 this.enviarSevidor();
@@ -21,12 +26,22 @@ class MouseTrackerSDK {
         touchArea.addEventListener('touchcancel', this.rastrearMovimento.bind(this));
 
         document.addEventListener('mousemove', this.rastrearMovimento.bind(this));
-        
+         
+    }
+    statusRede() {
+        if(navigator.connection){
+            this.rede = navigator.connection.effectiveType;
+            this.downlink  = navigator.connection.downlink
+        }else{
+            this.rede ='ff'
+            this.downlink =0
+        }
     }
     isMobile() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1) || window.innerWidth <= 600;
     }
     rastrearMovimento(event) {
+        this.statusRede()
         let dadosMovimento = null;
 
         if (event.type.startsWith('touch')) {
@@ -36,7 +51,9 @@ class MouseTrackerSDK {
                 y: touch.clientY,
                 timestamp: Date.now(),
                 mobile: this.isMobile(),
-                url: location.href
+                url: location.href,
+                rede: this.rede,
+                velocidade: this.downlink
             };
         } else {
             dadosMovimento = {
@@ -44,7 +61,9 @@ class MouseTrackerSDK {
                 y: event.pageY,
                 timestamp: Date.now(),
                 mobile: this.isMobile(),
-                url: location.href
+                url: location.href,
+                rede: this.rede,
+                velocidade: this.downlink
             };
         }
 
