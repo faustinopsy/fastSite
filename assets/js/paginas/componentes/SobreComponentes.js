@@ -6,12 +6,16 @@ const dadosPagina = {
     main: {
       tipo: "main",
       style: {
-        border: "2px solid black",
+        'background-color': "#f7f7f7a6",
+        'box-sizing': 'border-box',
+        'backdrop-filter': 'blur(30px)',
+        'border': "2px solid black",
         "box-sizing": "border-box",
         display: "flex",
         "flex-direction": "column",
-        background: "black",
-        height: "auto"
+        height: "250%",
+        'padding': '7px',
+        'margin-left': '39px'
       }
     },
     article: {
@@ -19,11 +23,9 @@ const dadosPagina = {
       style: {
         border: "2px solid black",
         "box-sizing": "border-box",
-        background: "lightgreen",
         display: "flex",
         "flex-wrap": "wrap",
         width: "100%",
-        height: "100%"
       }
     },
     section1: {
@@ -31,9 +33,6 @@ const dadosPagina = {
       style: {
         border: "2px solid black",
         "box-sizing": "border-box",
-        background: "lightcoral",
-        width: "40%",
-        height: "300px"
       }
     },
     section2: {
@@ -41,9 +40,6 @@ const dadosPagina = {
       style: {
         border: "2px solid black",
         "box-sizing": "border-box",
-        background: "lightsalmon",
-        width: "40%",
-        height: "300px"
       }
     },
     aside: {
@@ -51,7 +47,6 @@ const dadosPagina = {
       style: {
         border: "dashed 2px",
         "box-sizing": "border-box",
-        background: "lightpink",
         width: "20%",
         height: "300px"
       }
@@ -61,11 +56,8 @@ const dadosPagina = {
       style: {
         border: "2px solid black",
         "box-sizing": "border-box",
-        width: "100%",
-        height: "200px",
-        background: "url(./img/rick.jpg) 100%",
-        "background-repeat": "no-repeat",
-        "background-size": "cover"
+        width: "100px",
+        height: "150px"
       }
     }
   };

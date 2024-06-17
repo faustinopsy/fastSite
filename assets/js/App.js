@@ -24,15 +24,44 @@ class PJCommand {
 }
 
 let tela = {};
-
+const scriptTag = document.querySelector("script[src='assets/js/App.js']");
+const PJCommands = {
+  '#home': new PJCommand(
+    () => document.body.insertBefore(tela.home, scriptTag),
+    metaHome
+  ),
+  '#portifolio': new PJCommand(
+    () => document.body.insertBefore(tela.projetos, scriptTag),
+    metaProjeto
+  ),
+  '#curriculo': new PJCommand(
+    () => document.body.insertBefore(tela.sobre, scriptTag),
+    metaSobre
+  ),
+  '#contato': new PJCommand(
+    () => document.body.insertBefore(tela.contato, scriptTag),
+    metaContato
+  ),
+  'default': new PJCommand(
+    async () => document.body.insertBefore(tela.home, scriptTag),
+    metaHome
+  )
+};
 function inicializarPagina() {
-  const scriptTag = document.querySelector("script[src='assets/js/App.js']");
-  if (tela.home) {
-    document.body.insertBefore(tela.home, scriptTag);
+  const PJCommand = PJCommands[location.hash] || PJCommands['default'];
+    removeMain();
+    PJCommand.meta();
+    PJCommand.execute();
     especial();
+}
+function removeMain() {
+  const main = document.querySelector("main");
+  const head = document.querySelector("head");
+  head.innerHTML = '<link rel="stylesheet" href="assets/css/styles.css">';
+  if (main && main.parentNode) {
+    main.parentNode.removeChild(main);
   }
 }
-
 window.addEventListener('DOMContentLoaded', async function () {
   const navbar = fabricaMenu();
   const centerMenu = fabricaMenu('center');
@@ -41,58 +70,30 @@ window.addEventListener('DOMContentLoaded', async function () {
   worker.addEventListener('message', async (event) => {
     const { type, data, error } = event.data;
     if (type === 'dadosJson') {
-
       if (data && data.cards) {
         tela.home = await fabricaHome(data.cards);
-        console.log(tela.home);
-        inicializarPagina();
       }
+      if (data && data.curriculo) {
+        tela.sobre = await fabricaSobre(data.curriculo);
+      }
+      if (data && data.portifolio) {
+        tela.projetos = await fabricaProjetos(data.portifolio);
+      }
+      inicializarPagina()
     } else if (type === 'error') {
       console.error('Erro ao buscar estruturas:', error);
     }
   });
 
-  const scriptTag = document.querySelector("script[src='assets/js/App.js']");
   document.body.insertBefore(navbar, scriptTag);
-
-  
-
-  const PJCommands = {
-    '#home': new PJCommand(
-      () => document.body.insertBefore(tela.home, scriptTag),
-      metaHome
-    ),
-    '#projetos': new PJCommand(
-      () => document.body.insertBefore(tela.projetos, scriptTag),
-      metaProjeto
-    ),
-    '#sobre': new PJCommand(
-      () => document.body.insertBefore(tela.sobre, scriptTag),
-      metaSobre
-    ),
-    '#contato': new PJCommand(
-      () => document.body.insertBefore(tela.contato, scriptTag),
-      metaContato
-    ),
-    'default': new PJCommand(
-      async () => document.body.insertBefore(tela.home, scriptTag),
-      metaHome
-    )
-  };
 
   window.addEventListener('hashchange', function () {
     const PJCommand = PJCommands[location.hash] || PJCommands['default'];
     removeMain();
     PJCommand.meta();
     PJCommand.execute();
+    especial();
   });
 
-  function removeMain() {
-    const main = document.querySelector("main");
-    const head = document.querySelector("head");
-    head.innerHTML = '<link rel="stylesheet" href="assets/css/styles.css">';
-    if (main && main.parentNode) {
-      main.parentNode.removeChild(main);
-    }
-  }
+  
 });

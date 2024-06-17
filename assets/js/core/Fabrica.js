@@ -32,7 +32,24 @@ export function criarLabel(elemento) {
 export function criarInput(elemento) {
   return new Elemento(elemento).gerarElemento();
 }
+export function criarImagem(src) {
+  const img = document.createElement('img');
+  img.src = src;
+  return img;
+}
 
+export function criarElementoTexto(tag, texto) {
+  const elemento = document.createElement(tag);
+  elemento.innerHTML = texto;
+  return elemento;
+}
+
+export function criarLink(href, texto) {
+  const link = document.createElement('a');
+  link.href = href;
+  link.innerHTML = texto;
+  return link;
+}
 
 export function criaTabela(dadosTabela) {
   if (!dadosTabela.th || !dadosTabela.td) {

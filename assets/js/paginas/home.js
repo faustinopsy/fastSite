@@ -13,7 +13,7 @@ export async function fabricaHome(data){
       } else {
         console.warn('Card sem título encontrado:', cardData);
       }
-  });
+    });
     return novomain
     
   }
