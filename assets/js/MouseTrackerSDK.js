@@ -84,7 +84,6 @@ class MouseTrackerSDK {
     }
 
     enviarSevidor() {
-        console.log(this.movimentoMouser.length)
         if (this.movimentoMouser.length === 0) {
             return;
         }

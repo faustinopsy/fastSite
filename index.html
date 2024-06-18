@@ -18,6 +18,11 @@
     child-src 'none';
     upgrade-insecure-requests;
 "> 
+<script>
+  const worker = new Worker('./worker.js');
+  window.myWorker = worker;
+  myWorker.postMessage({ type: 'fetchData' });
+</script>
 </head>
 <body>
   <noscript>
@@ -29,8 +34,9 @@
       </div>
     </div>
   </noscript>
-  
-  
+  <div class="modal" >
+    <div id="loading"></div>
+  </div>
   <script type='module' src="assets/js/App.js"></script>
   <script type='module' src="assets/js/MouseTrackerSDK.js"></script>
 </body>

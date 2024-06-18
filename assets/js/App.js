@@ -1,5 +1,4 @@
-const worker = new Worker('./worker.js');
-worker.postMessage({ type: 'fetchData' });
+
 
 import fabricaMenu from "./paginas/nav/menu.js";
 import fabricaRodape from "./paginas/footer/rodape.js";
@@ -56,27 +55,29 @@ function removeMain() {
     main.parentNode.removeChild(main);
   }
 }
-window.addEventListener('DOMContentLoaded', async function () {
+
+window.addEventListener('DOMContentLoaded',  function () {
   const navbar = fabricaMenu();
   const centerMenu = fabricaMenu('center');
   const footer = fabricaRodape();
 
-  worker.addEventListener('message', async (event) => {
+  myWorker.addEventListener('message',  (event) => {
     const { type, data, error } = event.data;
     if (type === 'dadosJson') {
       if (data && data.cards) {
-        tela.home = await fabricaHome(data.cards);
+        tela.home =  fabricaHome(data.cards);
       }
       if (data && data.curriculo) {
-        tela.sobre = await fabricaSobre(data.curriculo);
+        tela.sobre =  fabricaSobre(data.curriculo);
       }
       if (data && data.portifolio) {
-        tela.projetos = await fabricaProjetos(data.portifolio);
+        tela.projetos =  fabricaProjetos(data.portifolio);
       }
       inicializarPagina()
     } else if (type === 'error') {
       console.error('Erro ao buscar estruturas:', error);
     }
+    
   });
 
   document.body.insertBefore(navbar, scriptTag);
@@ -88,6 +89,8 @@ window.addEventListener('DOMContentLoaded', async function () {
     PJCommand.execute();
     especial();
   });
-
   
+  this.setTimeout(()=>{
+    this.document.querySelector('.modal').style.display = 'none'
+  },1500)
 });
