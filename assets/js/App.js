@@ -61,17 +61,17 @@ window.addEventListener('DOMContentLoaded',  function () {
   const centerMenu = fabricaMenu('center');
   const footer = fabricaRodape();
 
-  myWorker.addEventListener('message',  (event) => {
+  myWorker.addEventListener('message', async (event) => {
     const { type, data, error } = event.data;
     if (type === 'dadosJson') {
       if (data && data.cards) {
-        tela.home =  fabricaHome(data.cards);
+        tela.home = await fabricaHome(data.cards);
       }
       if (data && data.curriculo) {
-        tela.sobre =  fabricaSobre(data.curriculo);
+        tela.sobre = await fabricaSobre(data.curriculo);
       }
       if (data && data.portifolio) {
-        tela.projetos =  fabricaProjetos(data.portifolio);
+        tela.projetos = await fabricaProjetos(data.portifolio);
       }
       inicializarPagina()
     } else if (type === 'error') {
