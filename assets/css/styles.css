@@ -91,15 +91,15 @@ body {
   }
   .menu-svg {
     position: absolute;
-    top: 135px;
-    left: 108px;
+    top: 23%;
+    left: 106px;
     width: 200px;
     height: 100%;
     z-index: 1;
   }
   .menu-button {
     position: absolute;
-    top: 658px;
+    top: 80%;
     left: 230px;
     transform: translateY(-50%);
     width: 35px;
