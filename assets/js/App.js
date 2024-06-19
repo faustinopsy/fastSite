@@ -1,5 +1,5 @@
-
-
+const worker = new Worker('./worker.js');
+worker.postMessage({ type: 'fetchData' });
 import fabricaMenu from "./paginas/nav/menu.js";
 import fabricaRodape from "./paginas/footer/rodape.js";
 import { fabricaHome, metaTagsHome } from "./paginas/home.js";
@@ -48,6 +48,9 @@ function inicializarPagina() {
     PJCommand.meta();
     PJCommand.execute();
     especial();
+    setTimeout(()=>{
+      document.querySelector('.modal').style.display = 'none'
+    },1500)
 }
 function removeMain() {
   const main = document.querySelector("main");
@@ -61,19 +64,16 @@ window.addEventListener('DOMContentLoaded',  function () {
   const centerMenu = fabricaMenu('center');
   const footer = fabricaRodape();
 
-  myWorker.addEventListener('message', async (event) => {
+  worker.addEventListener('message', async (event) => {
     const { type, data, error } = event.data;
     if (type === 'dadosJson') {
-      if (data && data.cards) {
+      if (data) {
         tela.home = await fabricaHome(data.cards);
-      }
-      if (data && data.curriculo) {
         tela.sobre = await fabricaSobre(data.curriculo);
-      }
-      if (data && data.portifolio) {
         tela.projetos = await fabricaProjetos(data.portifolio);
-      }
+        
       inicializarPagina()
+      }
     } else if (type === 'error') {
       console.error('Erro ao buscar estruturas:', error);
     }
@@ -90,7 +90,5 @@ window.addEventListener('DOMContentLoaded',  function () {
     especial();
   });
   
-  this.setTimeout(()=>{
-    this.document.querySelector('.modal').style.display = 'none'
-  },1500)
+  
 });

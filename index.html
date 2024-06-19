@@ -18,11 +18,7 @@
     child-src 'none';
     upgrade-insecure-requests;
 "> 
-<script>
-  const worker = new Worker('./worker.js');
-  window.myWorker = worker;
-  myWorker.postMessage({ type: 'fetchData' });
-</script>
+
 </head>
 <body>
   <noscript>
@@ -38,6 +34,6 @@
     <div id="loading"></div>
   </div>
   <script type='module' src="assets/js/App.js"></script>
-  <script type='module' src="assets/js/MouseTrackerSDK.js"></script>
+  <script type='module' src="assets/js/MouseTrackerSDK.js" defer></script>
 </body>
 </html>

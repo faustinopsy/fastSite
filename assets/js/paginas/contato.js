@@ -1,7 +1,75 @@
 import * as fabricar from "../core/Fabrica.js";
-import dadosPagina from "./componentes/ContatoComponentes.js";
-
-
+const dadosPagina = {
+  estiloPadrao: {
+    border: "2px solid black",
+    "box-sizing": "border-box"
+  },
+  main: {
+    tipo: "main",
+    style: {
+      border: "2px solid black",
+      "box-sizing": "border-box",
+      display: "flex",
+      "flex-direction": "column",
+      background: "black",
+      height: "auto"
+    }
+  },
+  article: {
+    tipo: "article",
+    style: {
+      border: "2px solid black",
+      "box-sizing": "border-box",
+      background: "lightgreen",
+      display: "flex",
+      "flex-wrap": "wrap",
+      width: "100%",
+      height: "100%"
+    }
+  },
+  section1: {
+    tipo: "section",
+    style: {
+      border: "2px solid black",
+      "box-sizing": "border-box",
+      background: "lightcoral",
+      width: "40%",
+      height: "300px"
+    }
+  },
+  section2: {
+    tipo: "section",
+    style: {
+      border: "2px solid black",
+      "box-sizing": "border-box",
+      background: "lightsalmon",
+      width: "40%",
+      height: "300px"
+    }
+  },
+  aside: {
+    tipo: "aside",
+    style: {
+      border: "dashed 2px",
+      "box-sizing": "border-box",
+      background: "lightpink",
+      width: "20%",
+      height: "300px"
+    }
+  },
+  imagem: {
+    tipo: "img",
+    style: {
+      border: "2px solid black",
+      "box-sizing": "border-box",
+      width: "100%",
+      height: "200px",
+      background: "url(./img/rick.jpg) 100%",
+      "background-repeat": "no-repeat",
+      "background-size": "cover"
+    }
+  }
+};
 const titulo = {
   tipo: 'titulo',
   textContent:'Página Contato',
@@ -58,8 +126,7 @@ function metaContato() {
   head.appendChild(palavrasChaves);
   const tagRobos = fabricar.criarContainer(metarobots); 
   head.appendChild(tagRobos);
-  head.innerHTML =`<link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/responsivo.css">`;
+  
 }
 
 
