@@ -1,5 +1,3 @@
-const worker = new Worker('./worker.js');
-worker.postMessage({ type: 'fetchData' });
 import fabricaMenu from "./paginas/nav/menu.js";
 import fabricaRodape from "./paginas/footer/rodape.js";
 import { fabricaHome, metaTagsHome } from "./paginas/home.js";
@@ -48,9 +46,8 @@ function inicializarPagina() {
     PJCommand.meta();
     PJCommand.execute();
     especial();
-    setTimeout(()=>{
-      document.querySelector('.modal').style.display = 'none'
-    },1500)
+    document.querySelector('.modal').style.display = 'none'
+   
 }
 function removeMain() {
   const main = document.querySelector("main");
@@ -64,15 +61,17 @@ window.addEventListener('DOMContentLoaded',  function () {
   const centerMenu = fabricaMenu('center');
   const footer = fabricaRodape();
 
-  worker.addEventListener('message', async (event) => {
+  xwork.addEventListener('message', async (event) => {
     const { type, data, error } = event.data;
     if (type === 'dadosJson') {
       if (data) {
         tela.home = await fabricaHome(data.cards);
         tela.sobre = await fabricaSobre(data.curriculo);
         tela.projetos = await fabricaProjetos(data.portifolio);
-        
-      inicializarPagina()
+      setTimeout(()=>{
+        inicializarPagina()
+      },500)
+     
       }
     } else if (type === 'error') {
       console.error('Erro ao buscar estruturas:', error);

@@ -18,7 +18,11 @@
     child-src 'none';
     upgrade-insecure-requests;
 "> 
-
+<script>
+  const worker = new Worker('./worker.js');
+  window.xwork = worker
+  xwork.postMessage({ type: 'fetchData' });
+</script>
 </head>
 <body>
   <noscript>
