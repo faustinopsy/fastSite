@@ -9,7 +9,8 @@ import { MonitorarPerformance } from "./MonitorarPerformance.js";
 import especial from "./funcoesEspeciais.js";
 
 //const monitor = new MonitorarPerformance();
-
+const worker = new Worker('./worker.js');
+worker.postMessage({ type: 'fetchData' });
 class PJCommand {
   constructor(execute, meta) {
     this.execute = execute;
@@ -56,7 +57,7 @@ function removeMain() {
     main.parentNode.removeChild(main);
   }
 }
-xwork.addEventListener('message',async (event) => {
+worker.addEventListener('message',async (event) => {
     
   const { type, data, error } = event.data;
   if (type === 'dadosJson') {

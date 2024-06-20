@@ -158,6 +158,6 @@ export async function fabricaHome(data){
     return novomain
     
   }
-  export  function metaTagsHome() {
+  export function metaTagsHome() {
     metaHome()
 }
