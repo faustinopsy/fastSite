@@ -105,34 +105,67 @@ function Card() {
   return fabricar.criarContainer(card);
 }
 
-export default function fabricaCard(cardData) {
+export default function fabricaCard(cardData, inicializarPagina, removeMain) {
   let imagemSrc;
-  if(navigator.connection){
-    const rede = navigator.connection.effectiveType;
-    if(rede=='4g'){
-      if(cardData.imagem){
-        imagemSrc = fabricar.criarImagem(cardData.imagem);
-     }else{
-        imagemSrc = fabricar.criarImagem(cardData.imagens);
-     }
-    }else{
-      imagemSrc = fabricar.criarImagem("img/padrao.webp");
-    }
-    
-  }
-
   const card = document.createElement('div');
   card.classList.add('card');
+  if (navigator.connection) {
+    const rede = navigator.connection.effectiveType;
+    if (rede == '4g') {
+      if (cardData.imagem) {
+        card.addEventListener('click', () => abrirConteudoCompleto(cardData, inicializarPagina, removeMain));
+        imagemSrc = fabricar.criarImagem(cardData.imagem);
+      } else {
+        imagemSrc = fabricar.criarImagem(cardData.imagens);
+        const link = fabricar.criarLink(cardData.link, cardData.titulo);
+        card.appendChild(link);
+      }
+    } else {
+      imagemSrc = fabricar.criarImagem("img/padrao.webp");
+    }
+  }
+
   const header = document.createElement('h2');
-  header.classList.add('card-header')
+  header.classList.add('card-header');
   header.textContent = cardData.titulo;
   card.appendChild(header);
-  imagemSrc.style = 'width:70%; margin-left:10%'
+  imagemSrc.style = 'width:70%; margin-left:10%';
   card.appendChild(imagemSrc);
   const description = document.createElement('p');
-  description.classList.add('card-body')
+  description.classList.add('card-body');
   description.textContent = cardData.descricao;
   card.appendChild(description);
-  
+
   return card;
 }
+
+function abrirConteudoCompleto(cardData, inicializarPagina, removeMain) {
+  removeMain();
+  const main = document.createElement('main');
+  main.classList.add('conteudo-completo');
+
+  const title = document.createElement('h1');
+  title.textContent = cardData.titulo;
+  main.appendChild(title);
+
+  const image = document.createElement('img');
+  image.src = cardData.imagem;
+  main.appendChild(image);
+
+  const content = document.createElement('div');
+  content.innerHTML = cardData.conteudo;
+  main.appendChild(content);
+
+  const backButton = document.createElement('button');
+  backButton.textContent = 'Voltar';
+  backButton.style.position ='fixed'
+  backButton.style.top ='10px'
+  backButton.style.right ='5px'
+  backButton.addEventListener('click', inicializarPagina);
+  main.appendChild(backButton);
+  const scriptTag = document.querySelector("script[src='assets/js/App.js']");
+  document.body.insertBefore(main, scriptTag);
+  document.documentElement.scrollTop = 0;
+}
+
+

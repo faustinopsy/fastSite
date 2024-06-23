@@ -145,19 +145,20 @@ function metaHome() {
   
 }
 
-export async function fabricaHome(data){
-    const { article,aside,estiloPadrao,imagem,main,section1,section2 } = dadosPagina;
-    const novomain = fabricar.criarContainer(main);
-    data.forEach(cardData => {
-      if (cardData.titulo) {
-        novomain.appendChild(fabricaCard(cardData));
-      } else {
-        console.warn('Card sem título encontrado:', cardData);
-      }
-    });
-    return novomain
-    
-  }
+export async function fabricaHome(data, inicializarPagina, removeMain) {
+  const { article, aside, estiloPadrao, imagem, main, section1, section2 } = dadosPagina;
+  const novomain = fabricar.criarContainer(main);
+  data.forEach(cardData => {
+    if (cardData.titulo) {
+      novomain.appendChild(fabricaCard(cardData, inicializarPagina, removeMain));
+    } else {
+      console.warn('Card sem título encontrado:', cardData);
+    }
+  });
+  return novomain;
+}
+
+
   export  function metaTagsHome() {
     metaHome()
 }

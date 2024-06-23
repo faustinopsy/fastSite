@@ -8,14 +8,14 @@ const dadosPagina = {
   main: {
     tipo: "main",
     style: {
-      'background-color': "#f7f7f7a6",
+      'background-color': "white",
       'box-sizing': 'border-box',
       'backdrop-filter': 'blur(30px)',
       'border': "2px solid black",
       "box-sizing": "border-box",
       display: "flex",
       "flex-direction": "column",
-      height: "250%",
+      "height": "300%",
       'padding': '7px',
       'margin-left': '39px'
     }
@@ -128,20 +128,20 @@ export async function fabricaSobre(data) {
   const articleDadosPessoais = fabricar.criarContainer(article);
   const imagemSrc = fabricar.criarImagem(data.informacoesPessoais.fotoPerfil);
   const nome = fabricar.criarElementoTexto('h1', data.informacoesPessoais.dadosPessoais.nome);
-  const linkedin = fabricar.criarLink(`https://linkedin.com/in${data.informacoesPessoais.dadosPessoais.linkedin}`, data.informacoesPessoais.dadosPessoais.linkedin);
-  const email = fabricar.criarLink(`mailto:${data.informacoesPessoais.dadosPessoais.email}`, data.informacoesPessoais.dadosPessoais.email);
-
+  const linkedin = fabricar.criarLink(`https://linkedin.com/in${data.informacoesPessoais.dadosPessoais.linkedin}`, `https://linkedin.com/in${data.informacoesPessoais.dadosPessoais.linkedin}`);
+  
   articleDadosPessoais.appendChild(imagemSrc);
   articleDadosPessoais.appendChild(nome);
   articleDadosPessoais.appendChild(linkedin);
-  articleDadosPessoais.appendChild(email);
   novomain.appendChild(articleDadosPessoais);
 
   const sectionHabilidades = fabricar.criarContainer(section1);
   const tituloHabilidades = fabricar.criarElementoTexto('h2', 'Habilidades');
   sectionHabilidades.appendChild(tituloHabilidades);
   data.habilidades.forEach(habilidade => {
-    const habilidadeElemento = fabricar.criarElementoTexto('p', `${habilidade.nome}: ${habilidade.descricao}`);
+    const habilidadeNome = fabricar.criarElementoTexto('h4', `${habilidade.nome}`);
+    const habilidadeElemento = fabricar.criarElementoTexto('p', `${habilidade.descricao}`);
+    sectionHabilidades.appendChild(habilidadeNome);
     sectionHabilidades.appendChild(habilidadeElemento);
   });
   novomain.appendChild(sectionHabilidades);

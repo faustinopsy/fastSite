@@ -1,22 +1,22 @@
 <?php
 define('JSON_DIR',  '../json/');
 
-// if (!is_dir(JSON_DIR)) {
-//     mkdir(JSON_DIR, 0777, true);
-// }
+if (!is_dir(JSON_DIR)) {
+    mkdir(JSON_DIR, 0777, true);
+}
 
 function carregarJson($filename) {
     $filepath = JSON_DIR . $filename;
     if (file_exists($filepath)) {
         $json = file_get_contents($filepath);
-        return json_decode($json, true);
+        return json_decode($json, true, 512, JSON_UNESCAPED_UNICODE);
     }
     return null;
 }
 
 function salvarJson($filename, $data) {
     $filepath = JSON_DIR . $filename;
-    $json = json_encode($data, JSON_PRETTY_PRINT);
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     file_put_contents($filepath, $json);
 }
 
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['salvar_json'])) {
         $filename = $_POST['filename'];
-        $jsonData = json_decode($_POST['dados_json'], true);
+        $jsonData = json_decode($_POST['dados_json'], true, 512, JSON_UNESCAPED_UNICODE);
         if (json_last_error() === JSON_ERROR_NONE) {
             salvarJson($filename, $jsonData);
             echo "JSON salvo com sucesso!";
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="dados_json">Conteúdo do JSON:</label>
                 <div class="textarea-container">
                     <div class="linhaNumeros" id="linhaNumeros"></div>
-                    <textarea name="dados_json" id="dados_json" rows="20" cols="100"><?php echo json_encode($jsonData, JSON_PRETTY_PRINT); ?></textarea>
+                    <textarea name="dados_json" id="dados_json" rows="20" cols="100"><?php echo json_encode($jsonData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE); ?></textarea>
                 </div>
                 <button type="submit" name="salvar_json">Salvar JSON</button>
             </form>

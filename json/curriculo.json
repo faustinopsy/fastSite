@@ -9,57 +9,50 @@
   },
   "habilidades": [
     {
-      "nome": "HTML",
-      "descricao": "Conhecimento avançado em HTML5 e CSS3"
+      "nome": "Frontend",
+      "descricao": "HTML5 e CSS3, JavaScript"
     },
     {
-      "nome": "JavaScript",
-      "descricao": "Conhecimento intermediário em JavaScript e jQuery"
+      "nome": "Backend",
+      "descricao": "PHP, Python, Java"
     },
     {
-      "nome": "PHP",
-      "descricao": "Conhecimento avançado em PHP"
-    },
-    {
-      "nome": "Python",
-      "descricao": "Conhecimento em Python"
-    },
-    {
-      "nome": "SQL",
-      "descricao": "Conhecimento intermediário Nos Bancos de Dados, MySQL/MariaDB, PostgreSQLe SQLServer"
+      "nome": "Banco de dados",
+      "descricao": "MySQL/MariaDB, PostgreSQLe SQLServer, SQLite"
     },
     {
       "nome": "API",
-      "descricao": "Conhecimento intermediário JSON e XML"
+      "descricao": "JSON e XML"
     },
-    {
-      "nome": "Mobile",
-      "descricao": "Conhecimento em Flutter, Kodular e AppInventor"
-    }
-    ,
     {
       "nome": "Frameworks",
       "descricao": "Conhecimento em Laravel, CodeIgniter e Vuejs, low code PHPmaker e scriptcase"
     }
   ],
   "experiencias": [
+    {
+      "cargo": "Professor de tecnologia",
+      "empresa": "Fatec - Faculdade de Tecnologia de São Paulo",
+      "periodo": "Agosto de 2023 - Atualmente",
+      "descricao": "Tópicos Iniciais do desenvolvimento Web I (Frontend), Tópicos Intermediários do desenvolvimento Web II (Backend), Tópicos Avançados do desenvolvimento Web III (Backend II)"
+    },
       {
       "cargo": "Professor de tecnologia",
       "empresa": "ETEC - Escola Técnica Estadual de São Paulo",
-      "periodo": "Maio de 2023 - Atualmente",
+      "periodo": "Maio de 2023 - Janeiro de 2024",
       "descricao": "Desenvolvimento de sistemas, Banco de dados, Segurança da informação, e Tecnologias para internet,"
     },
     {
       "cargo": "Analista Desenvolvedor",
       "empresa": "TECNOL - Sistemas de Automação S.A",
       "periodo": "Fevereiro de 2022 a Fevereiro de 2023",
-      "descricao": "Desenvolvimento e manunteção de sistemas web com PHP e seus Frameworks Laravel e CodeIgnite, Javascript e Vue, e PostgreSQL, integrações Rest e Soap"
+      "descricao": "Desenvolvimento e manunteção de sistemas web com PHP e seus Frameworks Laravel e CodeIgnite, Javascript e Vue, e PostgreSQL, integrações Rest e Soap. junto com outros desenvolvedores criavamos integrações entre sistemas diversos de vários estados com os respectivos detrans, onde financeiras vendiam carros, mas o registro no detran precisa passar por um empresa credenciada pelo contran, e todos os sistemas de financeiras e bancos trasmitem seus dados de formas variadas e a integração com as API dos detrans de cada estado era fundamental"
     },
     {
       "cargo": "Desenvolvedor Full Stack",
       "empresa": "PMESP",
       "periodo": "Abril de 2013 a Fevereiro de 2022",
-      "descricao": "Desenvolvimento e manunteção de aplicações web com PHP, Javascript e MySQL, SQLServer"
+      "descricao": "Desenvolvimento e manunteção de aplicações web com PHP, Javascript e MySQL, SQLServer. Desenvolvi sozinho Alguns sistemas na PMESP, como o sistema SISMEN (sistema de saúde mental) Sistema de Gestão de Relacionamento com o Cliente (CRM), também automatização do software de Inteligência para gerenciamento de crises baseado em mutiusuário e geolocalização de ocorrências este último algumas outras pessoas contribuiram, mas existem outros que são internos da área de inteligência policial. Possuo a capacidade de encontrar soluções rápidas para resolução de problemas. pois muitas vezes fui o responsável pela escolha da tecnologia a ser utilizada no desenvolvimento"
     }
   ],
   "dadosAcademicos": [

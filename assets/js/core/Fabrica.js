@@ -47,6 +47,7 @@ export function criarElementoTexto(tag, texto) {
 export function criarLink(href, texto) {
   const link = document.createElement('a');
   link.href = href;
+  link.target = 'blank'
   link.innerHTML = texto;
   return link;
 }

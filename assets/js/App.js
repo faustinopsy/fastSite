@@ -42,16 +42,18 @@ const PJCommands = {
     metaTagsHome
   )
 };
+
 function inicializarPagina() {
   const PJCommand = PJCommands[location.hash] || PJCommands['default'];
-    removeMain();
-    PJCommand.meta();
-    PJCommand.execute();
-    especial();
-    setTimeout(()=>{
-      document.querySelector('.modal').style.display = 'none'
-    },1500)
+  removeMain();
+  PJCommand.meta();
+  PJCommand.execute();
+  especial();
+  setTimeout(() => {
+    document.querySelector('.modal').style.display = 'none'
+  }, 1500)
 }
+
 function removeMain() {
   const main = document.querySelector("main");
   if (main && main.parentNode) {
@@ -59,7 +61,7 @@ function removeMain() {
   }
 }
 
-window.addEventListener('DOMContentLoaded',  function () {
+window.addEventListener('DOMContentLoaded', function () {
   const navbar = fabricaMenu();
   const centerMenu = fabricaMenu('center');
   const footer = fabricaRodape();
@@ -68,16 +70,15 @@ window.addEventListener('DOMContentLoaded',  function () {
     const { type, data, error } = event.data;
     if (type === 'dadosJson') {
       if (data) {
-        tela.home = await fabricaHome(data.cards);
+        tela.home = await fabricaHome(data.cards, inicializarPagina, removeMain);
         tela.sobre = await fabricaSobre(data.curriculo);
         tela.projetos = await fabricaProjetos(data.portifolio);
-        
-      inicializarPagina()
+
+        inicializarPagina()
       }
     } else if (type === 'error') {
       console.error('Erro ao buscar estruturas:', error);
     }
-    
   });
 
   document.body.insertBefore(navbar, scriptTag);
@@ -87,8 +88,7 @@ window.addEventListener('DOMContentLoaded',  function () {
     removeMain();
     PJCommand.meta();
     PJCommand.execute();
+    document.documentElement.scrollTop = 0;
     especial();
   });
-  
-  
 });
