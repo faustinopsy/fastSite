@@ -116,9 +116,10 @@ export default function fabricaCard(cardData, inicializarPagina, removeMain) {
         card.addEventListener('click', () => abrirConteudoCompleto(cardData, inicializarPagina, removeMain));
         imagemSrc = fabricar.criarImagem(cardData.imagem);
       } else {
+        card.addEventListener('click', () => {
+          window.open(cardData.link, '_blank');
+        });
         imagemSrc = fabricar.criarImagem(cardData.imagens);
-        const link = fabricar.criarLink(cardData.link, cardData.titulo);
-        card.appendChild(link);
       }
     } else {
       imagemSrc = fabricar.criarImagem("img/padrao.webp");

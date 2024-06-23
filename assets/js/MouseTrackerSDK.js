@@ -118,8 +118,8 @@ class MouseTrackerSDK {
 }
 
 const options = {
-    endpoint: '',
-    apiToken: '',
+    endpoint: 'http://localhost:8086/backAnalitics/api.php',
+    apiToken: '123',
     bufferSize: 100,
     siteKey: 'your-site-key'
 };
