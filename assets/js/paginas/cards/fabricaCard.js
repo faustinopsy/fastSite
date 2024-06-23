@@ -144,7 +144,7 @@ function abrirConteudoCompleto(cardData, inicializarPagina, removeMain) {
   removeMain();
   const main = document.createElement('main');
   main.classList.add('conteudo-completo');
-
+  
   const title = document.createElement('h1');
   title.textContent = cardData.titulo;
   main.appendChild(title);
@@ -167,6 +167,8 @@ function abrirConteudoCompleto(cardData, inicializarPagina, removeMain) {
   const scriptTag = document.querySelector("script[src='assets/js/App.js']");
   document.body.insertBefore(main, scriptTag);
   document.documentElement.scrollTop = 0;
+  
+  
 }
 
 

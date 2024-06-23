@@ -68,15 +68,14 @@ class MouseTrackerSDK {
         }
 
         console.log(this.movimentoMouser);
-
-        // if (this.options.elementSelector && !event.target.matches(this.options.elementSelector)) {
-        //     return;
-        // }
-
-        this.movimentoMouser.push(dadosMovimento);
-        if (this.movimentoMouser.length >= 15 && this.options.endpoint) {
-            this.enviarSevidor();
+        const url = location.hash;
+        if (!this.movimentoMouser[url]) {
+            this.movimentoMouser[url] = [];
         }
+        this.movimentoMouser.push(dadosMovimento);
+        // if (this.movimentoMouser.length >= 15 && this.options.endpoint) {
+        //     this.enviarSevidor();
+        // }
 
         if (this.movimentoMouser.length > this.options.bufferSize) {
             this.movimentoMouser.shift();
@@ -120,7 +119,7 @@ class MouseTrackerSDK {
 const options = {
     endpoint: 'http://localhost:8086/backAnalitics/api.php',
     apiToken: '123',
-    bufferSize: 100,
+    bufferSize: 10,
     siteKey: 'your-site-key'
 };
 const mouser = new MouseTrackerSDK(options);
