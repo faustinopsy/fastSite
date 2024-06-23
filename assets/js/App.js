@@ -1,5 +1,4 @@
-const worker = new Worker('./worker.js');
-worker.postMessage({ type: 'fetchData' });
+
 import fabricaMenu from "./paginas/nav/menu.js";
 import fabricaRodape from "./paginas/footer/rodape.js";
 import { fabricaHome, metaTagsHome } from "./paginas/home.js";
@@ -10,7 +9,8 @@ import { MonitorarPerformance } from "./MonitorarPerformance.js";
 import especial from "./funcoesEspeciais.js";
 
 //const monitor = new MonitorarPerformance();
-
+const worker = new Worker('./worker.js');
+worker.postMessage({ type: 'fetchData' });
 class PJCommand {
   constructor(execute, meta) {
     this.execute = execute;

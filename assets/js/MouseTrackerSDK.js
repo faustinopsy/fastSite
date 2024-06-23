@@ -67,7 +67,7 @@ class MouseTrackerSDK {
             };
         }
 
-        console.log(dadosMovimento);
+        console.log(this.movimentoMouser);
 
         // if (this.options.elementSelector && !event.target.matches(this.options.elementSelector)) {
         //     return;

@@ -28,7 +28,10 @@ const dadosMenu = {
     tipo: "button",
     class: "menu-button",
     eventos: {
-      click: "toggleMenu"
+      click: function(){
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+      }
     },
     children: [
       {
@@ -48,7 +51,11 @@ const dadosMenu = {
     atributos: { href: "#home" },
     textContent: "Inicio",
     eventos: {
-      click: "navHome"
+      click: function(){
+        location.hash = '#home'
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
     }
   },
   a2: {
@@ -56,7 +63,11 @@ const dadosMenu = {
     atributos: { href: "#portifolio" },
     textContent: "Portifolio",
     eventos: {
-      click: "navProjetos"
+      click: function(){
+        location.hash = '#portifolio'
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
     }
   },
   a3: {
@@ -64,7 +75,11 @@ const dadosMenu = {
     atributos: { href: "#curriculo" },
     textContent: "Curriculo",
     eventos: {
-      click: "navSobre"
+      click: function(){
+        location.hash = '#curriculo'
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
     }
   },
   a4: {
@@ -72,7 +87,11 @@ const dadosMenu = {
     atributos: { href: "#contato" },
     textContent: "Contato",
     eventos: {
-      click: "navContato"
+      click: function(){
+        location.hash = '#contato'
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
     }
   }
 };
