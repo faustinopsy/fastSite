@@ -8,13 +8,11 @@ self.addEventListener('message', async (event) => {
               '/json/portifolio.json',
               '/json/a2fa.json',
               '/json/cpfcorreto.json',
-              '/json/criptografiaAssimetrica.json',
               '/json/InteligenciaArtificial.json',
               '/json/LogicaProgramacao.json',
               '/json/LogsSistemas.json',
               '/json/MachineLearningPHP.json',
               '/json/OPHP.json',
-              '/json/SistemaLogin.json',
               '/json/TreinandoModelo.json'
           ];
 
@@ -26,8 +24,7 @@ self.addEventListener('message', async (event) => {
               portifolio: jsonData[1],
               cards:[
                 jsonData[2],jsonData[3],jsonData[4],jsonData[5],
-                jsonData[6],jsonData[7],jsonData[8], jsonData[9],
-                jsonData[10],jsonData[11]
+                jsonData[6],jsonData[7],jsonData[8], jsonData[9]
               ]
               
           };

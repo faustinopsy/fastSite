@@ -127,18 +127,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction:column;
+    flex-direction: column;
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 300px;
     box-sizing: border-box;
     border-radius: 0px 20px 0 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 5px 3px 5px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(30px);
     cursor: pointer;
-  }
+    margin: 5px;
+    box-shadow: -1px 7px #999;
+    transition: transform 0.1s ease; 
+    box-shadow: -1px 7px #999;
+}
+
+.card:active {
+    transform: translate(0%, 5px);
+    box-shadow: -1px 2px #999;
+}
   .card.dark-bg {
     background-color: #f7f7f729;
     color: white;
@@ -180,7 +189,6 @@ body {
   }
   .card:hover{
     background-color: #f7b500af;
-    box-shadow: 0 9px 12px rgba(0, 0, 0, 0.7);;
   }
   .modal {
     display: block; 
