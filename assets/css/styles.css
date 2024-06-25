@@ -132,7 +132,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 300px;
+    width: 250px;
     box-sizing: border-box;
     border-radius: 0px 20px 0 20px;
     box-shadow: 1px 5px 3px 5px rgba(0, 0, 0, 0.5);
@@ -189,6 +189,9 @@ body {
   }
   .card:hover{
     background-color: #f7b500af;
+  }
+  .card, .card * {
+    user-select: none;
   }
   .modal {
     display: block; 
@@ -304,3 +307,5 @@ body {
     overflow-x: auto;
     padding: 16px;
   }
+
+  

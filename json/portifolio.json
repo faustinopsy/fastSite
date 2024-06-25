@@ -1,6 +1,35 @@
 [  
+  {
+    "id": 1,
+    "titulo": "RPG Pixel",
+    "imagens": [
+  "img/pixel.png"
+  ],
+    "descricao": "Um jogo legal para desbloquear níveis mais avançados. ",
+    "link": "https://pixelrpg.faustinopsy.com/"
+  }
+  ,
+  {
+    "id": 13,
+    "titulo": "Jogo da combinação",
+    "imagens": [
+  "img/combinacao.png"
+  ],
+    "descricao": "Um jogo legal para desbloquear níveis mais avançados. ",
+    "link": "https://cadeado.ceuvago.com/"
+  }
+  ,
+  {
+    "id": 2,
+    "titulo": "Jogo de carros",
+    "imagens": [
+  "img/carros.png"
+  ],
+    "descricao": "Um jogo legal de carros para testar criação de jogos com javascript, ",
+    "link": "https://corrida.faustinopsy.com/"
+  },
 	{
-  "id": 1,    "titulo": "Lotofácil conferidor",    
+  "id": 14,    "titulo": "Lotofácil conferidor",    
 	"imagens": [     
 	"img/lotofacil.png"    
 	],
@@ -101,4 +130,6 @@
     "descricao": "Um controle financeiro offline, ele trabalha unicamente no navegador do usuário, ",
     "link": "https://banco.ceuvago.com/"
   }
+  
+  
 ]

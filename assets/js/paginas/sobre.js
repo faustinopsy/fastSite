@@ -12,11 +12,10 @@ const dadosPagina = {
       'box-sizing': 'border-box',
       'backdrop-filter': 'blur(30px)',
       'border': "2px solid black",
-      "box-sizing": "border-box",
       display: "flex",
       "flex-direction": "column",
-      "height": "300%",
-      'padding': '7px',
+      "min-height": "400vh",
+      padding: '7px',
       'margin-left': '39px'
     }
   },
@@ -35,7 +34,8 @@ const dadosPagina = {
     style: {
       border: "2px solid black",
       "box-sizing": "border-box",
-      padding: '10px'
+      padding: '10px',
+      'flex-basis': '100%'
     }
   },
   section2: {
@@ -43,7 +43,8 @@ const dadosPagina = {
     style: {
       border: "2px solid black",
       "box-sizing": "border-box",
-      padding: '10px'
+      padding: '10px',
+      'flex-basis': '100%'
     }
   },
   aside: {
@@ -63,7 +64,129 @@ const dadosPagina = {
       width: "100px",
       height: "150px"
     }
+  },
+  header: {
+    tipo: "header",
+    style: {
+      'background-color': "#0073b1",
+      color: "white",
+      padding: "20px",
+      'text-align': "center",
+      display: "flex",
+      "flex-direction": "column",
+      "align-items": "center"
+    },
+    children: [
+      {
+        tipo: "img",
+        style: {
+          'border-radius': "50%",
+          width: "100px",
+          height: "100px"
+        }
+      },
+      {
+        tipo: "h1",
+        style: {
+          margin: "10px 0 5px",
+          'font-size': "24px"
+        }
+      },
+      {
+        tipo: "a",
+        style: {
+          color: "#fff",
+          'text-decoration': "none"
+        }
+      }
+    ]
+  },
+  section: {
+    tipo: "section",
+    style: {
+      padding: "20px"
+    },
+    children: [
+      {
+        tipo: "h2",
+        style: {
+          'border-bottom': "2px solid #0073b1",
+          'padding-bottom': "5px",
+          'margin-bottom': "20px",
+          'font-size': "20px"
+        }
+      },
+      {
+        tipo: "h3",
+        style: {
+          margin: "10px 0 5px",
+          'font-size': "18px"
+        }
+      },
+      {
+        tipo: "h4",
+        style: {
+          margin: "5px 0",
+          'font-size': "16px",
+          'font-weight': "normal",
+          color: "#0073b1"
+        }
+      },
+      {
+        tipo: "p",
+        style: {
+          margin: "5px 0 15px"
+        }
+      }
+    ]
+  },
+  footer: {
+    tipo: "footer",
+    style: {
+      'background-color': "#f4f4f9",
+      padding: "10px",
+      'text-align': "center",
+      'font-size': "14px",
+      color: "#888",
+      width: "100%",
+      position: "absolute",
+      bottom: "0"
+    },
+    children: [
+      {
+        tipo: "a",
+        style: {
+          color: "#0073b1",
+          'text-decoration': "none"
+        }
+      }
+    ]
   }
+};
+const ajustarResponsividade = () => {
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (max-width: 768px) {
+      .main {
+        margin-left: 0 !important;
+        padding: 10px !important;
+      }
+      .header, .section, .footer {
+        padding: 10px !important;
+        text-align: center !important;
+      }
+      .section h2 {
+        font-size: 18px !important;
+      }
+      .section h3 {
+        font-size: 16px !important;
+      }
+      .section h4 {
+        font-size: 14px !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 };
 const titulo = {
   tipo: 'titulo',
@@ -105,6 +228,7 @@ function metaSobre() {
       console.error('Elemento <head> não encontrado no documento.');
       return;
   }
+  
   const viewportx = fabricar.criarContainer(viewport);
   head.appendChild(viewportx);
   const charsetx = fabricar.criarContainer(charset);
@@ -119,6 +243,7 @@ function metaSobre() {
   head.appendChild(palavrasChaves);
   const tagRobos = fabricar.criarContainer(metarobots); 
   head.appendChild(tagRobos);
+  ajustarResponsividade()
   
 }
 export async function fabricaSobre(data) {
