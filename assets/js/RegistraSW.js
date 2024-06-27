@@ -9,7 +9,7 @@ class RegistraSW {
   initialize() {
       this.registerService();
       this.pushPermission();
-      this.criabotoes();
+      //this.criabotoes();
   }
 
   async pushPermission() {

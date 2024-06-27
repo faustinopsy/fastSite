@@ -3,7 +3,8 @@ class MouseTrackerSDK {
         this.options = options;
         this.movimentoMouser = [];
         this.rede = null;
-        this.downlink  = null
+        this.downlink  = null;
+        this.referer = document.referrer;
         this.init();
     }
 
@@ -40,6 +41,26 @@ class MouseTrackerSDK {
     isMobile() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1) || window.innerWidth <= 600;
     }
+    getOriginType() {
+        const referer = this.referer.toLowerCase();
+        if (referer.includes('google.com')) {
+            return 'Google';
+        } else if (referer.includes('facebook.com')) {
+            return 'Facebook';
+        } else if (referer.includes('instagram.com')) {
+            return 'Instagram';
+        } else if (referer.includes('twitter.com')) {
+            return 'Twitter';
+        }else if (referer.includes('br.linkedin.com')) {
+            return 'linkedin';
+        } 
+        else if (referer.includes('youtube.com')) {
+            return 'youtube';
+        } else {
+            return 'Outra';
+        }
+    }
+    
     rastrearMovimento(event) {
         this.statusRede()
         let dadosMovimento = null;
@@ -53,7 +74,9 @@ class MouseTrackerSDK {
                 mobile: this.isMobile(),
                 url: location.href,
                 rede: this.rede,
-                velocidade: this.downlink
+                velocidade: this.downlink,
+                referer: this.referer, 
+                origin: this.getOriginType()
             };
         } else {
             dadosMovimento = {
@@ -63,11 +86,12 @@ class MouseTrackerSDK {
                 mobile: this.isMobile(),
                 url: location.href,
                 rede: this.rede,
-                velocidade: this.downlink
+                velocidade: this.downlink,
+                referer: this.referer, 
+                origin: this.getOriginType()
             };
         }
-
-        console.log(this.movimentoMouser);
+        //console.log(this.movimentoMouser);
         const url = location.hash;
         if (!this.movimentoMouser[url]) {
             this.movimentoMouser[url] = [];
@@ -117,7 +141,7 @@ class MouseTrackerSDK {
 }
 
 const options = {
-    endpoint: 'http://localhost:8086/backAnalitics/api.php',
+    endpoint: '/backAnalitics/api.php',
     apiToken: '123',
     bufferSize: 10,
     siteKey: 'your-site-key'

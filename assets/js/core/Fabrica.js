@@ -34,6 +34,7 @@ export function criarInput(elemento) {
 }
 export function criarImagem(src) {
   const img = document.createElement('img');
+  img.id = 'perfil'
   img.src = src;
   return img;
 }

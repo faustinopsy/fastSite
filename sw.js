@@ -64,7 +64,7 @@ self.addEventListener('fetch', event => {
   //     url.pathname === '/json/contato.json') {
   //   return;
   // }
-
+if(event.request.method ==='GET'){
   event.respondWith(
     (async function() {
       //cache 1º
@@ -88,6 +88,8 @@ self.addEventListener('fetch', event => {
       }
     })()
   );
+}
+
 });
  
     

@@ -22,11 +22,15 @@ const dadosPagina = {
   article: {
     tipo: "article",
     style: {
-      border: "2px solid black",
-      "box-sizing": "border-box",
-      display: "flex",
-      "flex-wrap": "wrap",
-      width: "100%",
+        border: '2px solid black',
+        'box-sizing': 'border-box',
+        display: 'flex',
+        'flex-wrap': 'wrap',
+        width: '100%',
+        'flex-direction': 'column',
+        'align-content': 'center',
+        'justify-content': 'center',
+        'align-items': 'center'
     }
   },
   section1: {
@@ -252,6 +256,7 @@ export async function fabricaSobre(data) {
 
   const articleDadosPessoais = fabricar.criarContainer(article);
   const imagemSrc = fabricar.criarImagem(data.informacoesPessoais.fotoPerfil);
+  imagemSrc.id= 'perfil'
   const nome = fabricar.criarElementoTexto('h1', data.informacoesPessoais.dadosPessoais.nome);
   const linkedin = fabricar.criarLink(`https://linkedin.com/in${data.informacoesPessoais.dadosPessoais.linkedin}`, `https://linkedin.com/in${data.informacoesPessoais.dadosPessoais.linkedin}`);
   
