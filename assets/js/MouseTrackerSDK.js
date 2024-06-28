@@ -131,7 +131,7 @@ class MouseTrackerSDK {
             return response.json();
         })
         .then(data => {
-            console.log('Dados enviados:', data);
+            //console.log('Dados enviados:', data);
             this.movimentoMouser = [];
         })
         .catch(error => {
